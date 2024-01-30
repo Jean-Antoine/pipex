@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:05:08 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/01/30 10:29:34 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:25:24 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	ft_malloc_data(t_data *data)
 	data->pipe_fd = (int **) malloc(sizeof(int *) * data->n_cmd);
 	data->path = ft_split(ft_get_env_var(data->envp, "PATH"), ':');
 	if (!data->pid || !data->pipe_fd || !data->path)
-		ft_exit("malloc", NULL, data);
+		ft_exit("malloc", data, EXIT_FAILURE);
 	data->i_cmd = -1;
 	while (++data->i_cmd < data->n_cmd - 1)
 	{
 		data->pipe_fd[data->i_cmd] = (int *) malloc(sizeof(int) * 2);
 		if (!data->pipe_fd[data->i_cmd])
-			ft_exit("malloc", NULL, data);
+			ft_exit("malloc", data, EXIT_FAILURE);
 		data->pipe_fd[data->i_cmd][IN] = -1;
 		data->pipe_fd[data->i_cmd][OUT] = -1;
 	}
@@ -50,7 +50,7 @@ t_data	ft_init_data(int ac, char **av, char **envp)
 	else
 		data.infile = ft_strdup(av[1]);
 	if (!data.infile)
-		ft_exit("malloc", NULL, NULL);
+		ft_exit("malloc", NULL, EXIT_FAILURE);
 	data.outfile = av[ac - 1];
 	data.n_cmd = ac - 3 - data.here_doc;
 	data.envp = envp;
@@ -60,6 +60,6 @@ t_data	ft_init_data(int ac, char **av, char **envp)
 	data.i_cmd = -1;
 	while (++data.i_cmd < data.n_cmd - 1)
 		if (pipe(data.pipe_fd[data.i_cmd]) == -1)
-			ft_exit("pipe", NULL, &data);
+			ft_exit("pipe", &data, EXIT_FAILURE);
 	return (data);
 }

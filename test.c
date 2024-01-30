@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 15:58:34 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/01/30 17:33:52 by jeada-si         ###   ########.fr       */
+/*   Created: 2024/01/30 15:41:12 by jeada-si          #+#    #+#             */
+/*   Updated: 2024/01/30 15:46:18 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "errno.h"
+#include "stdio.h"
+#include "string.h"
 
-void	ft_exit(char *prefix, t_data *data, int exit_code)
+int	main(void)
 {
-	perror(prefix);
-	if (data)
-		ft_free_data(data);
-	exit(exit_code);
+	int	i;
+
+	i = -1;
+	while (++i < 200)
+		printf("Errno %d : %s\n", i, strerror(i));
 }

@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 12:04:23 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/01/30 10:17:26 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:24:22 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_data	ft_init_data(int ac, char **av, char **envp);
 void	ft_free_data(t_data *data);
 char	*ft_get_env_var(char **envp, char *name);
 char	*ft_path(char *path, char *filename);
-void	ft_exit(char *prefix, char *msg, t_data *data);
+void	ft_exit(char *prefix, t_data *data, int exit_code);
 void	ft_check_cmd(t_data *data);
 void	ft_exec(t_data *data);
 char	*ft_get_here_doc(char *limiter);

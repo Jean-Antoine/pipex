@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 10:43:49 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/01/30 12:21:34 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:19:20 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int	ft_wait(t_data *data)
 	{
 		waitpid(data->pid[data->i_cmd], &status, 0);
 	}
-	return (status);
+	return (WEXITSTATUS(status));
 }
