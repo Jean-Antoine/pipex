@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 12:04:23 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/02/02 17:29:44 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:36:59 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <errno.h>
-# define OUT(i) (2 * i + 1)
-# define IN(i) (2 * i)
 
 typedef struct s_data
 {
@@ -31,10 +29,12 @@ typedef struct s_data
 	int		here_doc;
 	char	*limiter;
 	int		n_cmd;
-	int		i_cmd;
+	int		i_cmd; 
 	pid_t	*pid;
-	int		*fd;
-	int		*fd_err;
+	int		*fd_read;
+	int		*fd_write;
+	int		*fd_read_err;
+	int		*fd_write_err;
 	char	**path;
 	char	**envp;
 	char	**cmd;
@@ -53,5 +53,5 @@ void	ft_exec(t_data *data);
 void	ft_get_here_doc(t_data *data);
 void	ft_pipex(t_data *data);
 int		ft_wait(t_data *data);
-void	ft_close_fd(t_data	*data);
+void	ft_close(int *fd, int size);
 #endif

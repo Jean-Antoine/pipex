@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:47:19 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/02/02 17:17:11 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/02/05 13:05:24 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	ft_get_here_doc(t_data *data)
 	if (pipe(pipe_hd) == -1)
 		ft_exit("heredoc", data, EXIT_FAILURE);
 	ft_read_stdin(data, pipe_hd);
-	data->fd[0] = pipe_hd[0];
+	data->fd_read[0] = pipe_hd[0];
 }

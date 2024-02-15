@@ -10,7 +10,7 @@ SRCS_F 				= ft_init_data.c\
 						ft_exec.c\
 						ft_get_here_doc.c\
 						ft_wait.c\
-						ft_close_fd.c\
+						ft_close.c\
 						ft_parse_cmd.c
 SRCS				= $(addprefix $(SRCS_D), $(SRCS_F)) main.c
 OBJS				= $(SRCS:.c=.o)
